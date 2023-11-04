@@ -64,16 +64,17 @@
                                 </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" 
                                     value="Registrar conta">
-            
-                                
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Registrar com Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Registrar com Facebook
-                                </a>
+                                          
                             </form>
+                            <?php
+                                if (isset($_GET['erro'])) {
+                                    $erro = $_GET['erro'];
+                                    echo '<div class="alert alert-danger">' . htmlspecialchars($erro) . '</div>';
+                                }else if(isset($_GET['sucesso'])){
+                                    $sucesso = $_GET['sucesso'];
+                                    echo '<div class="alert alert-success">' . htmlspecialchars($sucesso) . '</div>';
+                                }
+                            ?>
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="#">Recuperar senha?</a>

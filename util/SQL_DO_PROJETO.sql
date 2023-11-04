@@ -1,21 +1,21 @@
 CREATE DATABASE myDB;
 
-USE db;
+USE myDB;
 
 CREATE TABLE usuario (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(30) NOT NULL,
     sobrenome VARCHAR(30) NOT NULL,
     email VARCHAR(35) UNIQUE NOT NULL,
-    senha VARCHAR(100) NOT NULL,
+    senha VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE cartao (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    banco VARCHAR(15) NOT NULL
+    banco VARCHAR(15) NOT NULL,
     numero VARCHAR(16) NOT NULL,
     limite DECIMAL(10,2) NOT NULL,
-    limite_atual DECIMAL(10,2) NOT NULL, 
+    limite_disponivel DECIMAL(10,2) NOT NULL, 
     usuario_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );

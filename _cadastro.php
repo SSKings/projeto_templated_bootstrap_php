@@ -1,10 +1,12 @@
 <?php
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 include 'dadosDeConexao.php';
 
 try {
     $conexao = new mysqli($URL, $USUARIO, $SENHA, $BD);
-    $conexao->autocommit(false);
 
     if ($conexao->connect_error) {
         echo 'Erro na conexão com o banco de dados: ' . $conexao->connect_error;
@@ -20,16 +22,18 @@ try {
 
     if ($comando->execute()) {
         $conexao->commit();
-        echo '<script>alert("Usuário Cadastrado com sucesso.");</script>';
-        echo '<script>window.location.href = "login.php";</script>';
+        $sucesso = "Usuário cadastrado com sucesso.";
+        header("Location: cadastro.php?sucesso=" . urlencode($sucesso));
     } else {
         echo 'Erro ao inserir dados no banco de dados: ' . $comando->error;
     }
 } catch (Exception $e) {
-    $conexao->rollback();
-    echo 'Erro ao cadastrar um usuário: ' . $e->getMessage();
+    $erro = "A conexão com servidor falhou.";
+    header("Location: cadastro.php?erro=" . urlencode($erro));
 } finally {
     $conexao->close();
     $comando->close();
+}
+
 }
 ?>
