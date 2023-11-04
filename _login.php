@@ -1,6 +1,8 @@
 <?php
 
-include 'dadosDeConexao.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    include 'dadosDeConexao.php';
 
 try{
     $conexao = new mysqli($URL, $USUARIO, $SENHA, $BD);
@@ -31,18 +33,22 @@ try{
             
             header("Location: principal.php");
         } else {
-            echo '<script>alert("email ou senha incorretos");</script>';
-            echo '<script>window.location.href = "login.php";</script>';
+            // echo '<script>alert("email ou senha incorretos");</script>';
+            // echo '<script>window.location.href = "login.php";</script>';
+            $erro = "Nome de usuário ou senha incorretos.";
+            header("Location: login.php?erro=" . urlencode($erro));
         }
         $comando->close();
 
 
     
 }catch(Exception $e){
-    echo "Erro ao tentar logar.";
+    $erro = "Erro de Conexão.";
+    header("Location: login.php?erro=" . urlencode($erro));
 }finally{
     $conexao->close();
 }
 
+}
 
 ?>

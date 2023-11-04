@@ -57,8 +57,14 @@
                                         </div>
                                         <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                                     
-                                                                             
+                                            
                                     </form>
+                                    <?php
+                                        if (isset($_GET['erro'])) {
+                                            $erro = $_GET['erro'];
+                                            echo '<div class="alert alert-danger">' . htmlspecialchars($erro) . '</div>';
+                                        }
+                                    ?>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Recuperar senha?</a>
