@@ -195,8 +195,39 @@
                         <h1 class="h3 mb-0 text-gray-800">Registro de Conta</h1>
                     </div>
 
-                 
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Registro de Conta</h6>
+                        </div>
 
+                        <div class="card-body">
+                            <form class="needs-validation" action="_registroCartao.php" method="post">
+                                <div class="form-group row">
+                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control"
+                                            id="banco" name="banco" placeholder="Banco" required>
+                                    </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control"
+                                            id="numero" name="numero" placeholder="Número" required>
+                                    </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control"  
+                                            id="saldo" name="saldo" placeholder="Saldo" required>
+                                    </div> 
+                                </div>
+                                <div class="form-group row">
+   
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-sm-3">
+                                        <input type="submit" class="btn btn-primary btn-block" 
+                                            value="Registrar conta">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>    
 
                 </div>
                 <!-- /.container-fluid -->
