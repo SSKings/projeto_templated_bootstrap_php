@@ -201,7 +201,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="needs-validation" action="_registroCartao.php" method="post">
+                            <form class="needs-validation" action="_registroConta.php" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <input type="text" class="form-control"
@@ -226,6 +226,15 @@
                                     </div>
                                 </div>
                             </form>
+                            <?php
+                                if (isset($_GET['erro'])) {
+                                    $erro = $_GET['erro'];
+                                    echo '<div class="alert alert-danger">' . htmlspecialchars($erro) . '</div>';
+                                }else if(isset($_GET['sucesso'])){
+                                    $sucesso = $_GET['sucesso'];
+                                    echo '<div class="alert alert-success">' . htmlspecialchars($sucesso) . '</div>';
+                                } 
+                            ?>
                         </div>
                     </div>    
 
