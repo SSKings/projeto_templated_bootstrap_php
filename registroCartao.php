@@ -224,6 +224,16 @@
                                     </div>
                                 </div>
                             </form>
+                            <?php
+                                if (isset($_GET['erro'])) {
+                                    $erro = $_GET['erro'];
+                                    echo '<div class="alert alert-danger">' . htmlspecialchars($erro) . '</div>';
+                                }else if(isset($_GET['sucesso'])){
+                                    $sucesso = $_GET['sucesso'];
+                                    echo '<div class="alert alert-success">' . htmlspecialchars($sucesso) . '</div>';
+                                } 
+                            ?>
+                            
                         </div>
                             
 
