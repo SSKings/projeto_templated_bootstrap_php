@@ -6,8 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 try{
     $conexao = new mysqli($URL, $USUARIO, $SENHA, $BD);
+    
     if ($conexao->connect_error) {
-        echo "Erro de conexão: " . $conexao->connect_error;
+        $erro = "Erro de conexão com o servidor.";
+        header("Location: login.php?erro=" . urlencode($erro));
     }
 
     $email = $_POST["email"];
@@ -27,6 +29,9 @@ try{
             $linha = $resultado->fetch_assoc();
             $nome = $linha['nome'];
             $_SESSION['nome'] = $nome;
+            $id = $linha['id'];
+            $_SESSION['usuario_id'] = $id;
+
             $comando->close();
             $conexao->close();
 
