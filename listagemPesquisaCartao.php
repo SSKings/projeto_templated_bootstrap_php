@@ -195,8 +195,54 @@
                         <h1 class="h3 mb-0 text-gray-800">Listagem e Pesquisa de Cartões</h1>
                     </div>
 
-                 
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Listagem e Pesquisa de Cartões</h6>
+                        </div>
 
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>BANCO</th>
+                                            <th>NÚMERO</th>
+                                            <th>LIMITE</th>
+                                            <th>LIMITE DISPONÍVEL</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>BANCO</th>
+                                            <th>NÚMERO</th>
+                                            <th>LIMITE</th>
+                                            <th>LIMITE DISPONÍVEL</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php 
+                                        
+                                            include 'tabelaCartao.php';                      
+                                        
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <?php
+                                    if (isset($_GET['erro'])) {
+                                        $erro = $_GET['erro'];
+                                        echo '<div class="alert alert-danger">' . htmlspecialchars($erro) . '</div>';
+                                    }else if(isset($_GET['sucesso'])){
+                                        $sucesso = $_GET['sucesso'];
+                                        echo '<div class="alert alert-success">' . htmlspecialchars($sucesso) . '</div>';
+                                    } 
+                                ?>
+                            </div>
+                        </div>
+                                  
+                    </div>  
+                
 
                 </div>
                 <!-- /.container-fluid -->
@@ -245,6 +291,7 @@
         </div>
     </div>
 
+   
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -254,7 +301,11 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 </body>
 
 </html>
